@@ -1,0 +1,96 @@
+<html>
+     <head>
+      <meta charset="UTF-8">
+      <title></title>
+     </head>
+     <body onload="fetchContacts()">
+            <div id="table">Contacts loading...</div>
+            <button id="refresh" type="button">Refresh</button>
+            <button id="addContact" type="button">Add Contact</button>
+
+            <script src="config.js"></script>
+            <script>
+                  function fetchContacts(){
+                        fetch(rootPath + "controller/get-contacts/")
+                        .then(function(response){
+                              return response.json();
+                  })
+                  .then(function(data){
+                        displayOutput(data);
+                        console.log(2+"2");
+                  })
+                  }
+                  function displayOutput(data){
+                      output="<table>";
+                      for(a in data){
+                          output+=`
+                          <tr onclick="editContact(${data[a].id})">
+                              <td><img src="${rootPath}contoller/uploads/${data[a].avatar}"width="40"/></td>
+                              <td><h5>${data[a].firstname}</h5></td>
+                              <td><h5>${data[a].lastname}</h5></td>
+                          <tr>
+                          `
+                      }
+                      output+="</table>";
+                      document.getElementById("table").innerHTML=output;
+                  }            
+
+            </script>
+            <script src="http://code.jquery.com/jquery.js"></script>
+            <script src="Script/Script.js" type="text/javascript"></script>
+     </body>
+</html>
+ <!--
+    <head>
+        <title>FNB Academy</title>
+        <link href="Stylesheet/Stylesheet.css" rel="Stylesheet" type="text/css">
+    </head>
+     
+    <body>
+       <a href="Home.html">Home</a>
+        <a href="SecondPage.html">Second Page</a>
+        <a href="" ><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg?t=1738256985" alt="God Of War"></a>
+          <h2>Thor</h2>
+          <div class="gallery"> 
+              <img src="Images/avengers_01.jpg"> 
+          </div> 
+          <h4>Bio</h4> 
+          <p>Full Name: Thor Odinson</p> 
+          <p>Place Of Birth: Asgard</p> 
+          <p>Alignment: Good</p> 
+          <p>Gender: Male</p>
+          <p>Race: Asgardian</p> 
+          <br/>
+          <h4>Power Stats</h4>
+          <p>Intelligence: 69%</p>
+          <p>Strength: 100%</p>
+          <p>Speed: 92%</p>
+          <p>Durability: 100%</p>
+          <p>Power: 100%</p>
+          <p>Combat: 85%</p>
+        
+          </body> -->
+          
+     <!-- <body>
+            <div id="header">
+                  <img src="images/logo.png"/>
+            </div>
+            <div id="tabs-top">
+                  <a href="#">ANIMALS</a>
+                  <a href="#">MAP</a>
+                  <a href="#">PLACES</a>
+            </div>
+            <div id="main-home">
+                  <img src="images/map.png" width="100">
+            </div>
+            <div id="tabs-bottom">
+                   <a href="#">WEATHER</a>
+                   <a href="#">FEEDBACK</a>
+            </div> 
+    </body> -->
+     <!--<tr>
+           <td>Thursday</td>
+           <td><img class="info-box-weather-icon" src"images/rain.png"></td>
+           <td>&uarr;28</td>
+           <td>&darr;17</td>     &darr;17 - for weather
+     </tr>-->
